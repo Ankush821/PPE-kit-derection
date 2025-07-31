@@ -3,3 +3,4 @@ opencv-python
 cvzone
 ultralytics
 numpy
+gunicorn
