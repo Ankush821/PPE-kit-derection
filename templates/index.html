@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>PPE Detection - Input</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>PPE Detection</h1>
+        <form action="/start" method="POST" enctype="multipart/form-data" class="form-container">
+            <fieldset>
+                <legend>Select detection mode:</legend>
+                <label>
+                    <input type="radio" id="with_alert" name="mode" value="with_alert" checked>
+                    With Alert
+                </label><br />
+                <label>
+                    <input type="radio" id="without_alert" name="mode" value="without_alert">
+                    Without Alert
+                </label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Select input source:</legend>
+                <label>
+                    <input type="radio" id="webcam" name="input_source" value="webcam" checked>
+                    Webcam (Live Camera)
+                </label><br />
+                <label>
+                    <input type="radio" id="upload" name="input_source" value="upload">
+                    Upload Video File
+                </label>
+            </fieldset>
+
+            <label for="video">Upload video (optional if webcam selected):</label><br />
+            <input type="file" id="video" name="video" accept="video/*" /><br /><br />
+
+            <button type="submit">Start Detection</button>
+        </form>
+    </div>
+</body>
+</html>

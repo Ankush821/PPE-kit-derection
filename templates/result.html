@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detection Result</title>
+</head>
+<body>
+    <h1>PPE Detection Result</h1>
+    <div>
+        <img src="{{ url_for('video_feed') }}" width="800" />
+    </div>
+
+    {% if mode == 'with_alert' %}
+        <audio id="alertSound" src="{{ url_for('static', filename='alert.mp3') }}" preload="auto"></audio>
+        <script>
+            const source = new EventSource("/alert-stream");
+            const alertSound = document.getElementById("alertSound");
+
+            source.onmessage = function(event) {
+                if (event.data === "alert") {
+                    alertSound.play().catch(e => console.log("Alert sound play error:", e));
+                }
+            };
+        </script>
+    {% endif %}
+</body>
+</html>
